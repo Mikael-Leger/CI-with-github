@@ -37,3 +37,15 @@ jobs:
     - name: Test with pytest
       run: |
         python -m unittest
+        
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Build docker image
+      run: 
+        docker build -t mikalight/ci-flask-app .
+    - name: Push image to dockerhub
+      run:
+        docker push mikalight/ci-flask-app
+  
